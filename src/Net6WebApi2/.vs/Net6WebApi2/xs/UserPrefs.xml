@@ -1,0 +1,6 @@
+﻿<Properties StartupConfiguration="{1DD79526-6987-4A61-88F5-088FB41BB204}|Default">
+  <MonoDevelop.Ide.ItemProperties.Net6WebApi2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Net6WebApi2.DalEfImpl FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Net6WebApi2.DalCommon FirstBuild="True" />
+</Properties>

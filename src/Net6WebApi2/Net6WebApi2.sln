@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net6WebApi2", "Net6WebApi2\Net6WebApi2.csproj", "{1DD79526-6987-4A61-88F5-088FB41BB204}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net6WebApi2.DalEfImpl", "Net6WebApi2.DalEfImpl\Net6WebApi2.DalEfImpl.csproj", "{56EEAECB-DFB2-40D4-A6A8-36CED82435B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net6WebApi2.DalCommon", "Net6WebApi2.DalCommon\Net6WebApi2.DalCommon.csproj", "{551250F3-0BCA-4066-BF09-5EA3F71C6B2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DD79526-6987-4A61-88F5-088FB41BB204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DD79526-6987-4A61-88F5-088FB41BB204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DD79526-6987-4A61-88F5-088FB41BB204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DD79526-6987-4A61-88F5-088FB41BB204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56EEAECB-DFB2-40D4-A6A8-36CED82435B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56EEAECB-DFB2-40D4-A6A8-36CED82435B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56EEAECB-DFB2-40D4-A6A8-36CED82435B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56EEAECB-DFB2-40D4-A6A8-36CED82435B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{551250F3-0BCA-4066-BF09-5EA3F71C6B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{551250F3-0BCA-4066-BF09-5EA3F71C6B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{551250F3-0BCA-4066-BF09-5EA3F71C6B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{551250F3-0BCA-4066-BF09-5EA3F71C6B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32A767CF-9BC4-4528-A17D-93EC52B1CF19}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal
