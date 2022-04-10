@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Net6WebApi2.DalEfImpl.Models
 {
-	public class Note
+	public record Note
     {
         public int id { get; set; }
         public string? text { get; set; }

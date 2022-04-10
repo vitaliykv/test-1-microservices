@@ -16,9 +16,9 @@ namespace Net6WebApi2.DalCommon.Models
             this.done = done;
         }
 
-        public int id { get; set; }
-        public string? text { get; set; }
-        public bool done { get; set; }
+        public int id { get; }
+        public string? text { get; }
+        public bool done { get; }
     }
 }
 

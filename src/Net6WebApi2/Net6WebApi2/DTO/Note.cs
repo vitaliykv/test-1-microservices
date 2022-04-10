@@ -1,28 +1,29 @@
 ﻿using System;
+
 namespace Net6WebApi2.DTO
 {
-    public class Note
+    public record Note : BaseNote
     {
-        public Note()
+        public Note() : base()
         {
         }
 
-        public Note(string? text, bool done)
+        public Note(string? text, bool done) : base(text, done)
         {
-            this.text = text;
-            this.done = done;
+
         }
 
-        public Note(int id, string? text, bool done)
+        public Note(DalCommon.Models.Note n) : this(n.id, n.text, n.done)
+        {
+
+        }
+
+        public Note(int id, string? text, bool done) : base(text, done)
         {
             this.id = id;
-            this.text = text;
-            this.done = done;
         }
 
         public int id { get; set; }
-        public string? text { get; set; }
-        public bool done { get; set; }
     }
 }
 

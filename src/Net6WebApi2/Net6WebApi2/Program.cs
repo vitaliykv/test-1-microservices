@@ -1,6 +1,4 @@
-﻿//using Microsoft.EntityFrameworkCore;
-
-using Net6WebApi2.DalCommon;
+﻿using Net6WebApi2.DalCommon;
 using Net6WebApi2.DalEfImpl;
 using Net6WebApi2.DTO;
 
@@ -17,8 +15,7 @@ builder.Services.AddSwaggerGen();
 //// Connect to PostgreSQL Database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.UseNoteDbContext(connectionString);
-//builder.Services.AddDbContext<NoteDb>(options =>
-//    options.UseNpgsql(connectionString));
+
 
 //... rest of the code omitted for brevity
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -44,41 +41,19 @@ app.UseAuthorization();
 app.MapControllers();
 
 
-//app.MapPost("/notes/", async (Note n, NoteDb db) =>
-//{
-//    db.Notes.Add(n);
-//    await db.SaveChangesAsync();
-//    return Results.Created($"/notes/{n.id}", n);
-//});
 
+app.MapGet("/api/v1/notes/{id:int}", async (int id, INoteSrv noteSrv) =>
+{
+    return await noteSrv.FindNote(id)
+            is Net6WebApi2.DalCommon.Models.Note n
+                ? Results.Ok(new Note(n))
+                : Results.NotFound();
+});
 
-//app.MapGet("/notes/{id:int}", async (int id, NoteDb db) =>
-//{
-//    return await db.Notes.FindAsync(id)
-//            is Note n
-//                ? Results.Ok(n)
-//                : Results.NotFound();
-//});
-
-
-//app.MapGet("/notes", async (NoteDb db) => await db.Notes.ToListAsync());
-
-
-app.MapPost("/notes/", async (Note n, INoteSrv noteSrv) =>
+app.MapPost("/api/v1/notes/", async (BaseNote n, INoteSrv noteSrv) =>
 {
     var nt = await noteSrv.AddNoteAsync(new Net6WebApi2.DalCommon.Models.Note(n.text, n.done));
     return Results.Created($"/notes/{nt}", nt);
 });
-
-
-app.MapGet("/notes/{id:int}", async (int id, INoteSrv noteSrv) =>
-{
-    return await noteSrv.FindNote(id)
-            is Net6WebApi2.DalCommon.Models.Note n
-                ? Results.Ok(n)
-                : Results.NotFound();
-});
-
-
 
 app.Run();
