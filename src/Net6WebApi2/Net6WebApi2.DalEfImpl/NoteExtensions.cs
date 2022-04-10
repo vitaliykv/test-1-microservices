@@ -19,6 +19,17 @@ namespace Net6WebApi2.DalEfImpl
             builder.Services.AddScoped<INoteSrv, NoteSrv>();
             return builder;
         }
+
+        public static WebApplication NoteDatabaseMigrate(this WebApplication app)
+        {
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<NoteDbContext.NoteDbContext>();
+                db.Database.Migrate();
+            }
+            return app;
+        }
+
     }
 }
 

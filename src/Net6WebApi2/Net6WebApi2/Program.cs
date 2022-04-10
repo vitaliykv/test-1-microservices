@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-//// Connect to PostgreSQL Database
+// Connect to PostgreSQL Database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.UseNoteDbContext(connectionString);
 
@@ -25,6 +25,9 @@ builder.UseNoteSrv();
 
 WebApplication? app = builder.Build();
 //... rest of the code omitted for brevity
+
+// Migrate Note Database
+app.NoteDatabaseMigrate();
 
 
 // Configure the HTTP request pipeline.
