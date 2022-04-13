@@ -4,6 +4,18 @@ using Net6WebApi2.DTO;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
 
+using var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder
+        .AddFilter("Microsoft", LogLevel.Warning)
+        .AddFilter("System", LogLevel.Warning)
+        .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+        .AddConsole();
+});
+
+ILogger logger = loggerFactory.CreateLogger<Program>();
+logger.LogInformation("Start Program 1 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -28,7 +40,7 @@ WebApplication? app = builder.Build();
 
 // Migrate Note Database
 app.NoteDatabaseMigrate();
-
+logger.LogInformation("NoteDatabaseMigrate OK aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
