@@ -1,15 +1,17 @@
 ﻿using Net6WebApi2.DalCommon;
 using Net6WebApi2.DalEfImpl;
 using Net6WebApi2.DTO;
+using Net6WebApi2.Middleware;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
 
 using var loggerFactory = LoggerFactory.Create(builder =>
 {
     builder
-        .AddFilter("Microsoft", LogLevel.Warning)
-        .AddFilter("System", LogLevel.Warning)
-        .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+        //.AddFilter("Microsoft", LogLevel.Information)
+        //.AddFilter("System", LogLevel.Information)
+        //.AddFilter("LoggingConsoleApp.Program", LogLevel.Information)
+        .ClearProviders()
         .AddConsole();
 });
 
@@ -41,6 +43,8 @@ WebApplication? app = builder.Build();
 // Migrate Note Database
 app.NoteDatabaseMigrate();
 logger.LogInformation("NoteDatabaseMigrate OK aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+app.UseMiddleware<RequestLoggingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

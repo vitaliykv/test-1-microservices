@@ -14,9 +14,11 @@
 
   <ItemGroup>
     <None Remove="DTO\" />
+    <None Remove="Middleware\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTO\" />
+    <Folder Include="Middleware\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Net6WebApi2.DalCommon\Net6WebApi2.DalCommon.csproj">

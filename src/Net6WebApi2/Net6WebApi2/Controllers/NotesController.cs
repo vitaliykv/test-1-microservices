@@ -20,6 +20,7 @@ public class NotesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IResult> Get(int id)
     {
+        _logger.LogWarning(id.ToString());
         return await _noteSrv.FindNote(id)
             is Net6WebApi2.DalCommon.Models.Note n
                 ? Results.Ok(new Note(n))
