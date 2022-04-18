@@ -10,8 +10,20 @@
           "Port": 7250
         }
       ],
-      "UpstreamPathTemplate": "/api/v2/Notes/{id}",
+      "UpstreamPathTemplate": "/Net6WebApi2/api/v2/Notes/{id}",
       "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v2/Notes",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7250
+        }
+      ],
+      "UpstreamPathTemplate": "/Net6WebApi2/api/v2/Notes",
+      "UpstreamHttpMethod": [ "Post" ]
     }
   ],
   "GlobalConfiguration": {
