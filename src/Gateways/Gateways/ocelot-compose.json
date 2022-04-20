@@ -2,27 +2,27 @@
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/v2/Notes/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7250
+          "Host": "net6webapi2",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Net6WebApi2/api/v2/Notes/{id}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get", "Options" ]
     },
     {
       "DownstreamPathTemplate": "/api/v2/Notes",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7250
+          "Host": "net6webapi2",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/Net6WebApi2/api/v2/Notes",
-      "UpstreamHttpMethod": [ "Post" ]
+      "UpstreamHttpMethod": [ "Post", "Options" ]
     }
   ],
   "GlobalConfiguration": {

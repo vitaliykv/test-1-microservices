@@ -1,0 +1,55 @@
+version: '3.4'
+
+services:
+
+  pg_db:
+    image: postgres
+    restart: always
+    container_name: db
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=dbfrt_dc_1
+    volumes:
+      - my_dbdata:/var/lib/postgresql/data
+    ports:
+      - "5432"
+    networks:
+       - mynetwork
+
+  net6webapi2:
+    image: ${DOCKER_REGISTRY-}net6webapi2
+    build:
+      context: ../Net6WebApi2
+      dockerfile: ../Net6WebApi2/Net6WebApi2/Dockerfile
+    container_name: app
+    depends_on:
+      - pg_db
+    networks:
+       - mynetwork
+    environment:
+      "ConnectionStrings__DefaultConnection": "Server=pg_db;Port=5432;Database=dbfrt_dc_1;User Id=postgres;Password=postgres"
+
+
+  gateways:
+    image: ${DOCKER_REGISTRY-}gateways
+    build:
+      context: .
+      dockerfile: Gateways/Dockerfile
+    depends_on:
+      - pg_db
+      - net6webapi2
+    ports:
+      - "61992:80"
+    networks:
+       - mynetwork
+    environment:
+      - Ocelot_json=ocelot-compose.json
+
+
+volumes:
+  my_dbdata:
+ 
+networks:
+  mynetwork:
+     driver: bridge
